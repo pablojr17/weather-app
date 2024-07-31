@@ -24,7 +24,7 @@ export class WeatherHomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.initialCityName = params['cidade'];
-      this.getWeatherDatas(this.initialCityName);
+      this.getWeatherDatas(this.initialCityName || 'Brasil');
     });
   }
 
