@@ -3,6 +3,7 @@ import { WeatherService } from '../../services/weather.service';
 import { WeatherDatas } from 'src/app/models/interfaces/Weather';
 import { Subject, takeUntil } from 'rxjs';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-weather-home',
@@ -15,10 +16,16 @@ export class WeatherHomeComponent implements OnInit, OnDestroy {
   weatherDatas!: WeatherDatas;
   searchIcon = faMagnifyingGlass;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(
+    private weatherService: WeatherService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.getWeatherDatas(this.initialCityName);
+    this.route.queryParams.subscribe((params) => {
+      this.initialCityName = params['cidade'];
+      this.getWeatherDatas(this.initialCityName);
+    });
   }
 
   getWeatherDatas(cityName: string): void {
