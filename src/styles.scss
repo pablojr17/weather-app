@@ -30,7 +30,7 @@ fa-icon {
 }
 
 .container {
-  width: 500px;
+  max-width: 500px;
   height: 80vh;
   background-color: var(--blue-2);
   border-radius: 20px;
@@ -82,7 +82,8 @@ fa-icon {
 .location {
   color: var(--white);
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .temperature {
@@ -164,6 +165,11 @@ fa-icon {
   text-align: center;
   width: 70%;
 }
+
+.search input::placeholder {
+  color: #fff;
+}
+
 .search-icon {
   margin-left: 1em;
 }
